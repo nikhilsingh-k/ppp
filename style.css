@@ -1,0 +1,144 @@
+:root {
+    --bg-color: #121212;
+    --calc-bg: #1e1e1e;
+    --btn-bg: #2d2d2d;
+    --btn-hover: #3d3d3d;
+    --text-color: #ffffff;
+    --accent-color: #bb86fc; /* Purple accent */
+    --op-color: #3700b3; /* Darker purple for operators */
+    --eq-color: #03dac6; /* Teal for equals */
+    --fn-color: #cf6679; /* Reddish for clear/delete */
+    --display-bg: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.calculator-container {
+    padding: 20px;
+}
+
+.calculator {
+    background-color: var(--calc-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 320px;
+    max-width: 100%;
+}
+
+.display {
+    background-color: var(--display-bg);
+    padding: 30px 20px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 120px;
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    min-height: 24px;
+    margin-bottom: 5px;
+}
+
+.current-operand {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1px; /* Small gap for grid definition */
+    background-color: var(--calc-bg);
+    padding: 1px;
+}
+
+.btn {
+    height: 75px;
+    border: none;
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    outline: none;
+    margin: 2px;
+    border-radius: 12px;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.op {
+    background-color: #252525;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.fn {
+    color: var(--fn-color);
+    font-weight: 600;
+}
+
+.eq {
+    background-color: var(--op-color);
+    color: white;
+    grid-column: span 2; /* Make equals button wider */
+    border-radius: 12px;
+}
+.eq:hover {
+    background-color: #4e00ff;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Glassmorphism attempt (subtle) */
+.calculator {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 350px) {
+    .calculator {
+        width: 100%;
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .display {
+        flex-grow: 1;
+    }
+    .buttons {
+        flex-grow: 2;
+    }
+}
